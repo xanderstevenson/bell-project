@@ -51,9 +51,11 @@ In my never-ending quest for peak efficiency (emphasis on never-ending), I’ve 
 - **Method of Operation**: Code forthcoming….
 
 
-
+---------------
 
 Original ReadMe from Fork Origin (https://github.com/respeaker/seeed-voicecard) found below....
+
+---------------
 
 # seeed-voicecard
 
