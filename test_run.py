@@ -19,12 +19,14 @@ import matplotlib.pyplot as plt
 # Finding QuadMic Device 
 ##############################################
 #
+
+
 def indx_getter():
     quadmic_indx = []
     for indx in range(audio.get_device_count()):
         dev = audio.get_device_info_by_index(indx) # get device
         if dev['maxInputChannels']==4 and \
-           len([ii for ii in dev['name'].split('-') if ii=='4mic'])>=1:
+        len([ii for ii in dev['name'].split('-') if ii=='4mic'])>=1:
             print('-'*30)
             print('Found QuadMic!')
             print('Device Index: {}'.format(indx)) # device index
@@ -91,7 +93,7 @@ def data_grabber():
     # print(f'Channel 2: {chan_2_data}')
     # print(f'Channel 3: {chan_3_data}')
     # print(f'Channel 4: {chan_4_data}')
-  
+
     
     return channel_data
 
@@ -117,8 +119,8 @@ def plotter():
                 label='Microphone {0:1d}'.format(chan+1)) # initial channel plot
         lines.append(chan_line) # channel plot array
     ax.legend(loc='upper center',
-              bbox_to_anchor=(0.5,-0.05),ncol=chans,
-              fontsize=14) # legend for mic labels
+            bbox_to_anchor=(0.5,-0.05),ncol=chans,
+            fontsize=14) # legend for mic labels
     fig.show() # show plot
     print('\nfig = ', fig)
     return fig,ax,ax_bgnd,lines
@@ -162,22 +164,22 @@ if __name__=="__main__":
     while True:
         data_chunks = data_grabber() # grab the data  
 
-   
+
         chan_1_data = data_chunks[0]
         chan_2_data = data_chunks[1]  
         chan_3_data = data_chunks[2]
         chan_4_data = data_chunks[3]    
 
-        print(f'Channel 1: {chan_1_data}')
-        print(f'Channel 2: {chan_2_data}')
-        print(f'Channel 3: {chan_3_data}')
-        print(f'Channel 4: {chan_4_data}')
+        # print(f'Channel 1: {chan_1_data}')
+        # print(f'Channel 2: {chan_2_data}')
+        # print(f'Channel 3: {chan_3_data}')
+        # print(f'Channel 4: {chan_4_data}')
 
 
         # print('data_chunks = ', data_chunks)
         # example of data_chunks =  [array([27., 26., 40., ..., -1., 13., 26.]), array([-27.,  13.,  26., ...,  26.,  13.,  26.]), array([-27., -27., -54., ...,  26.,  40.,  26.]), array([26., 53., 13., ..., 13., 53., 26.])]
         lines = plot_updater() # update plot with new data
-        
-        
 
-        
+        for chunk in range(0,len(data_chunks)):
+            print(f'CH #{chunk + 1}: {data_chunks[chunk]}')
+
